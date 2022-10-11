@@ -1,3 +1,3 @@
 export function App() {
-  return <div>My React App with Ada School</div>;
+  return <div>Welcome to React</div>;
 }
