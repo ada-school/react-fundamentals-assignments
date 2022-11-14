@@ -1,0 +1,45 @@
+form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  border: solid 1px #eee;
+  border-radius: 0.5rem;
+}
+
+form > div {
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+input {
+  display: block;
+  padding: 0.5rem;
+  background-color: #ededed;
+  border: none;
+}
+
+span.error {
+  display: block;
+  color: red;
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+button {
+  background-color: #4b09d2;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ba9ef0;
+}
