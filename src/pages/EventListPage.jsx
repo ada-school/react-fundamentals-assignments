@@ -1,26 +1,35 @@
-import { Link } from "react-router-dom";
 import { getEvents } from "../services/eventsService";
 import { useEffect, useState } from "react";
 import { EventCard } from "../components/EventCard";
+import { Link } from "react-router-dom";
 
-export function EventListPage() {
-  const [events, setEvents] = useState();
+export function EventListPage({ eventId, priceId }) {
+  const [event, setEvent] = useState([]);
 
   useEffect(() => {
-    getEvents().then((eventos) => setEvents(eventos));
+    getEvents().then((eventos) => setEvent(eventos));
+    setEvent(event);
   }, []);
+
   return (
     <main>
-      {events?.map((event) => (
+      {event?.map((event) => (
         <EventCard
           key={event.id}
-          id={event.id}
+          id={
+            <div>
+              <Link to={`/events/${event.id}`}>
+                <button>Detalle</button>
+              </Link>
+              <Link to={`/events/${eventId}/tickets/${priceId}`}>
+                <button>Tickets</button>
+              </Link>
+            </div>
+          }
           name={event.name}
-          start={event.start}
           poster={event.poster}
         />
       ))}
-      {/* <Link to={"/events/:eventId"}>Event list page</Link> */}
     </main>
   );
 }

@@ -8,8 +8,8 @@ import { TicketPaymentPage } from "./pages/TicketPaymentPage";
 export function AppRouter() {
   return (
     <>
-      <Menu />
       <div>
+        <Menu />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/events" element={<EventListPage />} />

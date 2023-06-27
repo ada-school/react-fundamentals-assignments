@@ -1,34 +1,51 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getEventById } from "../services/eventsService";
 import { sendPaymentLink } from "../services/paymentsService";
 
-export function TicketPaymentPage() {
-  const { eventId, priceId } = useParams();
-  const [event, setEvent] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+export function TicketPaymentPage({ eventId, priceId }) {
   const navigate = useNavigate();
-
-  const handleOnclickEvents = async () => {
-    navigate("/events/:eventId");
-  };
-  const handleOnclickTickets = async () => {
-    sendPaymentLink(navigate("/tickets/:priceId"));
+  const handlePayment = () => {
+    navigate();
   };
   return (
     <main>
-      <button onClick={handleOnclickEvents}>Events</button>
-      <button onClick={handleOnclickTickets}>Ticket</button>
+      <h2>Paymet details</h2>
+      <p>Event ID: {eventId}</p>
+      <p>Price ID: {priceId}</p>
+      <button onClick={handlePayment}>Pay Now</button>
     </main>
   );
 }
 
-/* const navigate = useNavigate();
+/**
+ * 
+ * 
+ * const [event, setEvent] = useState();
+  const { eventId, priceId } = useParams();
+  const search = useSearchParams();
 
-  const handleOnclickTickets = async () => {
-    navigate("/tickets/:priceId");
+  useEffect(() => {
+    getEvents().then((event) => setEvent(event));
+  }, []);
+
+  const handlePayment = async () => {
+    try {
+      const email = "user@example.com";
+      const event = await getEventById(eventId);
+      if (!event || !event.prices) {
+        throw new Error(`Precio invalido`);
+      }
+      const price = event.prices.find((price) => price.id === priceId);
+      console.log("Price:", price);
+      if (!price) {
+        throw new Error("invalido");
+      }
+      const resul = await sendPaymentLink(email, eventId, priceId);
+      window.alert(
+        `Payment link was sent to ${email} for ${event.name} and price type: ${price.type}. Result: ${resul}`
+      );
+    } catch (error) {
+      console.log("Error en la transacción de pago:", error);
+    }
   };
-  const handleOnclickEvents = async () => {
-    navigate("/events/:eventId");
-  };
-  <button onClick={() => handleOnclickEvents(true)}>Events</button> */
+ */
