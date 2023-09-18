@@ -11,7 +11,7 @@ export function App() {
       <h1>Ada School - React Hooks</h1>
 
       <div>
-        <span className={color}>Counter:{counter}</span>
+        <span className={color}>{`Counter:${counter}`}</span>
       </div>
 
       <button>Increase</button>
